@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Environment — never commit credentials
+.env
+.env.*
+!.env.example
+
+# Large video files
+skool-intro/
+*.mp4
+*.mov
+*.avi
+*.webm
+*.mkv
+
+# Runtime state
+current-edit.json
+*.log
+*.output
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac
+.DS_Store
+
+# Backfill/one-off scripts (not part of the deployable product)
+post-youtube-backfill.js
+post-youtube-backfill-2.js
+post-tommy-youtube-backfill.js
+post-missed-backfill.js
+post-drive-cdn-backfill.js
+setup-windows-scheduler.bat
+run.bat
+yt-dlp.exe

@@ -1,0 +1,16 @@
+{
+  "name": "cult-content-scheduler",
+  "version": "1.0.0",
+  "description": "Lark Bitable → GHL / PhantomBuster content scheduler",
+  "main": "scheduler.js",
+  "scripts": {
+    "start": "node scheduler.js",
+    "watch": "node scheduler.js --watch"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.4.0",
+    "form-data": "^4.0.0",
+    "openai": "^4.0.0"
+  }
+}
