@@ -66,8 +66,8 @@ const PLATFORM_ACCOUNTS = {
   'Tommy YouTube':  '__buffer_youtube_tommy__',     // Tommy Lynch YT only
   'Tommy TikTok':   '__buffer_tiktok_tommy__',      // tommylynch_ via Buffer
   'Tommy X':        '__buffer_x__',                // thlynch3
-  // ── GHL-routed (Cult Content business TikTok) ────────────────────────────
-  TikTok:          '6844f386af761628a88a0049_c216j58Vx9XxYa7WYMiA_000o3Vtks8AR8BeWyB1AIxSgm9YXhQoY81Y_business',
+  // ── Cult Content TikTok via Buffer ───────────────────────────────────────
+  TikTok:           '__buffer_tiktok_cult__',          // CC brand TikTok via Buffer
   // ── Manual ────────────────────────────────────────────────────────────────
   Discord:          '__manual__',
   Skool:            '__manual__',
@@ -94,6 +94,7 @@ const BUFFER_CHANNEL_MAP = {
   '__buffer_facebook__':        [process.env.BUFFER_FACEBOOK_CULT_ID        || '69d70154031bfa423ce3fefa'],
   '__buffer_x__':               [process.env.BUFFER_X_ID                    || '69d7018f031bfa423ce3ffa5'],
   '__buffer_tiktok_tommy__':    [process.env.BUFFER_TIKTOK_TOMMY_ID         || '69d7f3cd031bfa423ce82b4a'],
+  '__buffer_tiktok_cult__':     [process.env.BUFFER_TIKTOK_CULT_ID          || ''],  // Add CC TikTok Buffer channel ID when connected
 };
 
 // YouTube channel IDs — these need YouTube-specific metadata in the mutation
@@ -518,7 +519,7 @@ async function processPost(record) {
   const errors = [];
   const successVia = [];
 
-  // ── GHL (TikTok only) ──────────────────────────────────────────────────────
+  // ── GHL (legacy — no longer used for posting; kept for CDN upload only) ────
   if (ghlAccountIds.length > 0) {
     try {
       const res = await ghlCreatePost({ accountIds: ghlAccountIds, summary, mediaUrl, scheduleDate, postType });
