@@ -48,18 +48,25 @@ const CFG = {
 // Keys match the Lark Bitable "Platforms" multi-select option names exactly.
 // Cult Content TikTok stays on GHL until connected to Buffer. Tommy TikTok now on Buffer.
 const PLATFORM_ACCOUNTS = {
-  // ── Buffer-routed platforms ────────────────────────────────────────────────
-  Instagram:        '__buffer_instagram__',        // cultcontent.cc + tommy.lynch_
-  Facebook:         '__buffer_facebook__',         // Cult Content page
-  LinkedIn:         '__buffer_linkedin__',         // Cult Content LinkedIn page
-  YouTube:          '__buffer_youtube__',          // both YT channels
-  'X (Twitter)':    '__buffer_x__',               // thlynch3 (TODO: add business TikTok + X to Buffer)
-  'Tommy Instagram':'__buffer_instagram_tommy__',  // tommy.lynch_ only
-  'Tommy LinkedIn': '__buffer_linkedin_tommy__',   // Tommy Lynch personal profile
-  'Tommy YouTube':  '__buffer_youtube_tommy__',    // Tommy Lynch YT only
-  'Tommy TikTok':   '__buffer_tiktok_tommy__',     // tommylynch_ via Buffer
-  'Tommy X':        '__buffer_x__',               // thlynch3
-  // ── GHL-routed (Cult Content business TikTok — TODO: move to Buffer) ───────
+  // ── Cult Content brand accounts (CC only) ────────────────────────────────
+  'CC Instagram':   '__buffer_instagram_cc__',     // cultcontent.cc IG only
+  'CC YouTube':     '__buffer_youtube_cc__',        // Cult Content YT only
+  'CC LinkedIn':    '__buffer_linkedin__',          // Cult Content LinkedIn
+  'CC Facebook':    '__buffer_facebook__',          // Cult Content Facebook
+  'CC X':           '__buffer_x__',                // Cult Content X
+  // ── Legacy names (both CC + Tommy) — keep for backwards compat ──────────
+  Instagram:        '__buffer_instagram__',         // cultcontent.cc + tommy.lynch_
+  Facebook:         '__buffer_facebook__',          // Cult Content page
+  LinkedIn:         '__buffer_linkedin__',          // Cult Content LinkedIn page
+  YouTube:          '__buffer_youtube__',           // both YT channels
+  'X (Twitter)':    '__buffer_x__',                // thlynch3
+  // ── Tommy personal accounts ──────────────────────────────────────────────
+  'Tommy Instagram':'__buffer_instagram_tommy__',   // tommy.lynch_ only
+  'Tommy LinkedIn': '__buffer_linkedin_tommy__',    // Tommy Lynch personal profile
+  'Tommy YouTube':  '__buffer_youtube_tommy__',     // Tommy Lynch YT only
+  'Tommy TikTok':   '__buffer_tiktok_tommy__',      // tommylynch_ via Buffer
+  'Tommy X':        '__buffer_x__',                // thlynch3
+  // ── GHL-routed (Cult Content business TikTok) ────────────────────────────
   TikTok:          '6844f386af761628a88a0049_c216j58Vx9XxYa7WYMiA_000o3Vtks8AR8BeWyB1AIxSgm9YXhQoY81Y_business',
   // ── Manual ────────────────────────────────────────────────────────────────
   Discord:          '__manual__',
@@ -68,6 +75,10 @@ const PLATFORM_ACCOUNTS = {
 
 // Buffer channel ID map — routing token → array of Buffer channel IDs to post to
 const BUFFER_CHANNEL_MAP = {
+  // CC-only singles
+  '__buffer_instagram_cc__':    [process.env.BUFFER_IG_CULT_ID              || '69d70072031bfa423ce3fc25'],
+  '__buffer_youtube_cc__':      [process.env.BUFFER_YOUTUBE_CULT_CONTENT_ID || '69d6de07031bfa423ce366fa'],
+  // Both CC + Tommy
   '__buffer_youtube__':         [
     process.env.BUFFER_YOUTUBE_CULT_CONTENT_ID || '69d6de07031bfa423ce366fa',
     process.env.BUFFER_YOUTUBE_TOMMY_ID        || '69d6de1e031bfa423ce368be',

@@ -23,8 +23,8 @@ const SCRIPTS = [
   { id: '2e0ecd68-da29-4e76-b8ea-bb75fc2e1c12', name: 'Stop Competing on Volume' },
 ];
 
-// Post to Tommy's TikTok and Instagram
-const PLATFORMS = ['Tommy TikTok', 'Tommy Instagram'];
+// Post to Cult Content brand accounts only (NOT Tommy personal)
+const PLATFORMS = ['CC Instagram', 'TikTok', 'CC LinkedIn', 'CC YouTube'];
 
 // Track which video IDs we've already written to Lark (avoid dupes)
 const alreadyPosted = new Set();
