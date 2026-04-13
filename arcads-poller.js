@@ -99,7 +99,7 @@ async function poll() {
 
   for (const script of SCRIPTS) {
     const videos = await httpsGet(`${ARCADS_BASE}/v1/scripts/${script.id}/videos`, { Authorization: ARCADS_AUTH });
-    const items = videos.items || [];
+    const items = Array.isArray(videos) ? videos : (videos.items || []);
 
     for (const video of items) {
       const status = video.videoStatus?.status || video.videoStatus;
@@ -114,11 +114,12 @@ async function poll() {
         nextPostOffset += 4 * 60 * 60 * 1000; // next video 4h later
 
         const record = await larkCreateRecord({
-          'Post Text': `Comment CULT CONTENT below and I'll send you the link.`,
-          'Media URL': url,
-          'Platform': PLATFORMS,
-          'Scheduled Date': scheduleDate.toISOString().split('T')[0],
+          'Content': `Comment CULT CONTENT below and I'll send you the link.`,
+          'Media URL': { link: url, text: url },
+          'Platforms': PLATFORMS,
+          'Scheduled Date': scheduleDate.getTime(),
           'Status': 'Ready',
+          'Content Type': 'Video',
           'Notes': `Arcads | Script: ${script.name} | Video: ${video.id}`,
         });
 
